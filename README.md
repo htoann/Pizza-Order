@@ -1,2 +1,3 @@
-# Pizza-Time
-Realtime pizza order tracker app using NodeJS, Express and MongoDB
+# Pizza Time
+
+### Realtime pizza app using Node - Express - Mongo - Socket.io
