@@ -18,3 +18,7 @@ nav li a {
 nav li a:hover {
   color: #fe5f1e;
 }
+
+section.hero {
+  background: #f8f8f8;
+}
