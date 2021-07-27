@@ -20,18 +20,15 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-// Session store
-const mongoStore = new MongoStore({
-  mongoUrl: mongoose.connection._connectionString,
-});
-
 // Session config
 app.use(
   session({
-    secret: process.env.COOKIE_SECRET,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
-    store: mongoStore,
+    store: new MongoStore({
+      mongoUrl: dbURI,
+    }),
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 24 hour
   })
 );
