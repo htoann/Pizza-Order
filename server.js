@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const ejs = require("ejs");
@@ -5,7 +6,7 @@ const path = require("path");
 const expressLayout = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const session = require("express-session");
-require("dotenv").config();
+const flash = require("express-flash");
 
 // Session config
 app.use(
@@ -16,6 +17,8 @@ app.use(
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 24 hour
   })
 );
+
+app.use(flash());
 
 // Assets
 app.use(express.static("public"));
@@ -28,8 +31,7 @@ app.set("view engine", "ejs");
 require("./routes/web")(app);
 
 // Database connection
-// mongodb+srv://root:root@cluster0.aj2mc.mongodb.net/pizza
-const dbURI = "mongodb://localhost/pizza";
+const dbURI = `${process.env.dbURI}`;
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
