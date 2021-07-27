@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <nav class="container mx-auto flex items-center justify-between py-4">
+  <nav class="mx-auto flex items-center justify-between py-4 sticky top-0 container">
     <a href="/">
       <img src="/img/logo.png" alt="logo" /></a>
     <div>
@@ -32,10 +32,13 @@
           <a href="/login">Login</a>
         </li class="ml-6">
         <li class="ml-6">
-          <a href="/cart" class="inline-block px-4 py-2 rounded-full">
+          <a href="/cart" class="inline-block px-4 py-2 rounded-full flex">
             <img src="/img/cart.png" alt="" />
+            <span id="cartCouter" class="text-white font-bold pl-2">
+              <%= session.cart ? session.cart.totalQty : '' %>
+            </span>
           </a>
-        </li class="ml-6">
+        </li class=" ml-6">
       </ul>
     </div>
   </nav>

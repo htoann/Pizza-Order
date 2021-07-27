@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "node server",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npx mix watch",
-    "watch-poll": "npm run watch -- --watch-poll",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
   },
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "connect-mongo": "^4.4.1",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
@@ -21,7 +23,8 @@
     "express-ejs-layouts": "^2.5.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.2",
-    "mongoose": "^5.13.3"
+    "mongoose": "^5.13.3",
+    "noty": "^3.2.0-beta-deprecated"
   },
   "devDependencies": {
     "laravel-mix": "^6.0.25",

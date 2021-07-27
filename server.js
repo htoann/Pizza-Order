@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const ejs = require("ejs");
 const path = require("path");
 const expressLayout = require("express-ejs-layouts");
 const PORT = process.env.PORT || 3000;
@@ -37,6 +36,13 @@ app.use(flash());
 
 // Assets
 app.use(express.static("public"));
+app.use(express.json());
+
+// Global middleware
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
 
 // Set Template engine
 app.use(expressLayout);

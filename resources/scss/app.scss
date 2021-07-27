@@ -1,9 +1,16 @@
 @import "./_variables";
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
+@import "~noty/src/themes/light.scss";
 
 body {
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   color: $dark;
+}
+
+nav {
+  background-color: $pure;
 }
 
 nav li:last-child a {
@@ -38,6 +45,9 @@ section.hero {
     border-color: $pure;
     color: $pure;
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 .btn-primary {
@@ -67,4 +77,11 @@ section.login {
   input {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
+}
+
+.noty_theme__light {
+  border-radius: 50px !important;
+  padding-left: 8px !important;
+  margin-top: 10px !important;
+  color: white !important;
 }
