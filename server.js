@@ -9,6 +9,7 @@ const session = require("express-session");
 const flash = require("express-flash");
 const MongoStore = require("connect-mongo");
 const dbURI = process.env.dbURI;
+const passport = require("passport");
 
 // Database connection
 mongoose
@@ -38,6 +39,10 @@ app.use(flash());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// passport config
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Global middleware
 app.use((req, res, next) => {
