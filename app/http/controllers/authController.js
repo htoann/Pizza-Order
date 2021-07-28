@@ -13,25 +13,10 @@ class authController {
   }
 
   postLogin(req, res) {
-    passport.authenticate("local", (err, user, info) => {
-      if (err) {
-        req.flash("error", info.message);
-        return next(err);
-      }
-
-      if (!user) {
-        req.flash("error", info.message);
-        res.redirect("/login");
-      }
-
-      req.logIn(user, (err) => {
-        if (err) {
-          req.flash("error", info.message);
-          return next(err);
-        }
-
-        return res.redirect("/");
-      });
+    passport.authenticate("local", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+      failureFlash: true,
     })(req, res);
   }
 
@@ -65,6 +50,11 @@ class authController {
         req.flash("error", "Something went wrong");
         return res.redirect("/register");
       });
+  }
+
+  logout(req, res) {
+    req.logout();
+    res.redirect("/login");
   }
 }
 

@@ -5,10 +5,12 @@ const guest = require("../app/http/middleware/guest");
 
 function initRoute(app) {
   app.get("/", homeController.index);
+
   app.get("/login", guest, authController.login);
   app.post("/login", authController.postLogin);
   app.get("/register", guest, authController.register);
   app.post("/register", authController.postRegister);
+  app.get("/logout", authController.logout);
 
   app.get("/cart", cartController.index);
   app.post("/update-cart", cartController.update);
