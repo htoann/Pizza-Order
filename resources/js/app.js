@@ -10,6 +10,7 @@ function updateCart(pizza) {
     .then((res, req) => {
       cartCouter.innerText = res.data.totalQty;
       new Noty({
+        layout: "centerRight",
         theme: "light",
         type: "success",
         timeout: 1000,

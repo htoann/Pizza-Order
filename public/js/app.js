@@ -1855,6 +1855,7 @@ function updateCart(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post("/update-cart", pizza).then(function (res, req) {
     cartCouter.innerText = res.data.totalQty;
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+      layout: "centerRight",
       theme: "light",
       type: "success",
       timeout: 1000,
