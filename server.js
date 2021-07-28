@@ -22,7 +22,7 @@ mongoose
 // Session config
 app.use(
   session({
-    secret: process.env.SECRET,
+    secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
@@ -36,6 +36,7 @@ app.use(flash());
 
 // Assets
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Global middleware

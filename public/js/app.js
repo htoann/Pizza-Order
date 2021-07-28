@@ -1864,6 +1864,7 @@ function updateCart(pizza) {
     }).show();
   })["catch"](function (err) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+      layout: "centerRight",
       theme: "light",
       type: "error",
       timeout: 1000,

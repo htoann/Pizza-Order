@@ -20,6 +20,7 @@ function updateCart(pizza) {
     })
     .catch((err) => {
       new Noty({
+        layout: "centerRight",
         theme: "light",
         type: "error",
         timeout: 1000,
