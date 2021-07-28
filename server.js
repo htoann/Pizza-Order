@@ -10,6 +10,7 @@ const flash = require("express-flash");
 const MongoStore = require("connect-mongo");
 const dbURI = process.env.dbURI;
 const passport = require("passport");
+const passportInit = require("./app/config/passport");
 
 // Database connection
 mongoose
@@ -41,6 +42,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // passport config
+passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
