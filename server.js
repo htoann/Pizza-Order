@@ -41,7 +41,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// passport config
+// Passport config
 passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
@@ -49,6 +49,7 @@ app.use(passport.session());
 // Global middleware
 app.use((req, res, next) => {
   res.locals.session = req.session;
+  res.locals.user = req.user;
   next();
 });
 

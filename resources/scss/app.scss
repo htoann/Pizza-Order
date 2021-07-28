@@ -5,6 +5,7 @@
 
 body {
   font-family: "Lato", sans-serif;
+  // font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   color: $dark;
 }
@@ -85,8 +86,4 @@ section.login {
   margin-top: 10px !important;
   color: white !important;
   bottom: 350px !important;
-}
-
-footer {
-  background: $secondary;
 }

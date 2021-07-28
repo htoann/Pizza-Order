@@ -1,6 +1,7 @@
 const User = require("../../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const passport = require("passport");
 
 class authController {
   login(req, res) {
@@ -11,7 +12,28 @@ class authController {
     res.render("auth/register");
   }
 
-  postLogin(req, res) {}
+  postLogin(req, res) {
+    passport.authenticate("local", (err, user, info) => {
+      if (err) {
+        req.flash("error", info.message);
+        return next(err);
+      }
+
+      if (!user) {
+        req.flash("error", info.message);
+        res.redirect("/login");
+      }
+
+      req.logIn(user, (err) => {
+        if (err) {
+          req.flash("error", info.message);
+          return next(err);
+        }
+
+        return res.redirect("/");
+      });
+    })(req, res);
+  }
 
   async postRegister(req, res) {
     const { name, email, password } = req.body;
