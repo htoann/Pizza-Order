@@ -2,10 +2,12 @@
 @import "~noty/src/noty.scss";
 @import "~noty/src/themes/mint.scss";
 @import "~noty/src/themes/light.scss";
+// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
 
 body {
-  font-family: "Lato", sans-serif;
-  // font-family: Arial, Helvetica, sans-serif;
+  // font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   color: $dark;
 }
@@ -84,6 +86,5 @@ section.login {
   border-radius: 50px !important;
   padding-left: 8px !important;
   margin-top: 10px !important;
-  color: white !important;
-  bottom: 350px !important;
+  bottom: 355px !important;
 }

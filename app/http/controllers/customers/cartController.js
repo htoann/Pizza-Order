@@ -1,6 +1,6 @@
 const { json } = require("express");
 
-class cartController {
+class CartController {
   index(req, res) {
     res.render("customers/cart");
   }
@@ -33,4 +33,4 @@ class cartController {
   }
 }
 
-module.exports = new cartController();
+module.exports = new CartController();

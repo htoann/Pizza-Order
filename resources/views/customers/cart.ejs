@@ -46,8 +46,11 @@
                         </div>
                     </form>
                 </div>
-                <!-- <a class="inline-block cursor-pointer btn-primary mt-4 px-6 py-2 rounded-full text-white font-bold mt-6"
-                href="/login">Login to continue</a> -->
+                <% if(!user) { %>
+                    <a class="inline-block cursor-pointer btn-primary mt-4 px-6 py-2 rounded-full text-white font-bold mt-6"
+                        href="/login">Login to continue</a>
+                    <% } %>
+
             </div>
         </div>
         <%} else { %>

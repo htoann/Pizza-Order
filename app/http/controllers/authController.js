@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const passport = require("passport");
 
-class authController {
+class AuthController {
   login(req, res) {
     res.render("auth/login");
   }
@@ -12,12 +12,12 @@ class authController {
     res.render("auth/register");
   }
 
-  postLogin(req, res) {
+  postLogin(req, res, next) {
     passport.authenticate("local", {
       successRedirect: "/",
       failureRedirect: "/login",
       failureFlash: true,
-    })(req, res);
+    })(req, res, next);
   }
 
   async postRegister(req, res) {
@@ -34,17 +34,19 @@ class authController {
     });
 
     // Hashpassword
-    const hasedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Create a new user
     const user = new User({
       name,
       email,
-      password: hasedPassword,
+      password: hashedPassword,
     })
       .save()
-      .then(() => {
-        res.redirect("/");
+      .then((user) => {
+        passport.authenticate("local")(req, res, () => {
+          res.redirect("/");
+        });
       })
       .catch((err) => {
         req.flash("error", "Something went wrong");
@@ -58,4 +60,4 @@ class authController {
   }
 }
 
-module.exports = new authController();
+module.exports = new AuthController();
