@@ -38,12 +38,14 @@
                   <td class="border px-4 py-2">
                     <%= order.address %>
                   </td>
-
+                  <td class="border px-4 py-2">
+                    <%= moment(order.createdAt).format('LLL') %>
+                  </td>
                 </tr>
                 <% }) %>
                   <% } else { %>
                     <tr>
-                      <td class="p-4"><span>No orders found!</span></td>
+                      <td class="p-4 text"><span>No orders found!</span></td>
                     </tr>
                     <% } %>
           </tbody>

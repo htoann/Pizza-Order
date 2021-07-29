@@ -363,6 +363,9 @@ nav li a:hover {
 section.hero {
   background: #f8f8f8;
 }
+section.hero img {
+  width: 94% !important;
+}
 
 .size {
   background: #f8f8f8;
@@ -416,4 +419,8 @@ section.login input {
   padding-left: 8px !important;
   margin-top: 10px !important;
   bottom: 355px !important;
+}
+
+a.link {
+  color: #fe5f1e;
 }

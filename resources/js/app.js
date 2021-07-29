@@ -16,6 +16,8 @@ function updateCart(pizza) {
         timeout: 1000,
         progressBar: false,
         text: "Item added to cart",
+        // modal: true,
+        killer: true,
       }).show();
     })
     .catch((err) => {
@@ -24,7 +26,6 @@ function updateCart(pizza) {
         theme: "light",
         type: "error",
         timeout: 1000,
-        progressBar: false,
         text: "Something went wrong",
       }).show();
     });

@@ -1,11 +1,20 @@
 const Order = require("../../../models/Order");
+const moment = require("moment");
 
 class OrderController {
+  async index(req, res) {
+    const orders = await Order.find({ customerId: req.user._id }).sort({
+      createAt: -1,
+    });
+    console.log(orders);
+    res.render("customers/orders", { orders: orders, moment: moment });
+  }
+
   store(req, res) {
     const { phone, address, paymentType } = req.body;
 
     const order = new Order({
-      customerId: req.body._id,
+      customerId: req.user._id,
       items: req.session.cart.items,
       phone,
       address,
@@ -13,18 +22,13 @@ class OrderController {
       .save()
       .then((result) => {
         req.flash("success", "Order placed successfully");
+        delete req.session.cart;
         return res.redirect("/customer/orders");
       })
       .catch((err) => {
         req.flash("err", "Something went wrong");
-        console.log(err);
         return res.redirect("/cart");
       });
-  }
-
-  async index(req, res) {
-    const orders = await Order.find({ customerId: req.user._id });
-    res.render("customers/orders", { orders: orders });
   }
 }
 

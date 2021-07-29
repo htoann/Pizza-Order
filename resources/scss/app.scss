@@ -33,6 +33,9 @@ nav li a {
 
 section.hero {
   background: $secondary;
+  & img {
+    width: 94% !important;
+  }
 }
 
 .size {
@@ -87,4 +90,8 @@ section.login {
   padding-left: 8px !important;
   margin-top: 10px !important;
   bottom: 355px !important;
+}
+
+a.link {
+  color: $primary;
 }

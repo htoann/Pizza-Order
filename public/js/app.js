@@ -1860,7 +1860,9 @@ function updateCart(pizza) {
       type: "success",
       timeout: 1000,
       progressBar: false,
-      text: "Item added to cart"
+      text: "Item added to cart",
+      // modal: true,
+      killer: true
     }).show();
   })["catch"](function (err) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
@@ -1868,7 +1870,6 @@ function updateCart(pizza) {
       theme: "light",
       type: "error",
       timeout: 1000,
-      progressBar: false,
       text: "Something went wrong"
     }).show();
   });
