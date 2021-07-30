@@ -6,6 +6,7 @@ class OrderController {
     const orders = await Order.find({ customerId: req.user._id }).sort({
       createdAt: -1,
     });
+    res.header("Cache-Control", "no-store");
     res.render("customers/orders", { orders: orders, moment: moment });
   }
 
