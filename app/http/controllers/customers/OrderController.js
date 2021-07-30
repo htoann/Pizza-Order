@@ -4,9 +4,8 @@ const moment = require("moment");
 class OrderController {
   async index(req, res) {
     const orders = await Order.find({ customerId: req.user._id }).sort({
-      createAt: -1,
+      createdAt: -1,
     });
-    console.log(orders);
     res.render("customers/orders", { orders: orders, moment: moment });
   }
 

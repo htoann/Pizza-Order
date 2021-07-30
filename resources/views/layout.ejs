@@ -26,7 +26,15 @@
               <a href="/#menu">Menu</a>
             </li class="ml-6">
             <li class="ml-6">
-              <a href="/customer/orders">Offers</a>
+
+              <% if(user) {%>
+                <% if(user.email==="admin@admin.com" ) {%>
+                  <a href="/admin/orders">Offers</a>
+                  <%} else {%>
+                    <a href="/customer/orders">Offers</a>
+                    <% } %>
+                      <% } %>
+
             </li class="ml-6">
             <% if(user) { %>
               <li class="ml-6">

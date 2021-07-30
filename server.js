@@ -8,13 +8,13 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("express-flash");
 const MongoStore = require("connect-mongo");
-const dbURI = process.env.dbURI;
+const dbURI = process.env.MONGODB_URI;
 const passport = require("passport");
 const passportInit = require("./app/config/passport");
 
 // Database connection
 mongoose
-  .connect(`${process.env.dbURI}`, {
+  .connect(`${process.env.MONGODB_URI}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -24,7 +24,7 @@ mongoose
 // Session config
 app.use(
   session({
-    secret: process.env.COOKIE_SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
