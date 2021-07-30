@@ -1,14 +1,18 @@
 const Order = require("../../../models/Order");
 
 class OrderController {
-  async index(req, res) {
-    const order = await Order.find({
+  index(req, res) {
+    Order.find({
       status: { $ne: "completed" },
     })
       .sort({ createdAt: -1 })
       .populate("customerId", "- password")
       .exec((err, orders) => {
-        res.render("admin/orders");
+        if (req.xhr) {
+          return res.json(orders);
+        } else {
+          return res.render("admin/orders");
+        }
       });
   }
 }

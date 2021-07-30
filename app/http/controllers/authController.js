@@ -3,6 +3,12 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const passport = require("passport");
 
+const _getRedirectUrl = (req) => {
+  return req.body.email === "admin@admin.com"
+    ? "/admin/orders"
+    : "/customer/orders";
+};
+
 class AuthController {
   login(req, res) {
     res.render("auth/login");
@@ -14,7 +20,7 @@ class AuthController {
 
   postLogin(req, res, next) {
     passport.authenticate("local", {
-      successRedirect: "/",
+      successRedirect: _getRedirectUrl(req),
       failureRedirect: "/login",
       failureFlash: true,
     })(req, res, next);
