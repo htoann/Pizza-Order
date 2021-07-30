@@ -1840,7 +1840,24 @@ module.exports = {
   \*******************************/
 /***/ ((module) => {
 
-module.exports = function initAdmin() {};
+module.exports = function initAdmin() {
+  var orderTableBody = document.querySelector("#orderTableBody");
+  var orders = [];
+  var markup;
+  axios.get("/admin/orders", {
+    headers: {
+      "X-Requested-With": "XMLHttpRequest"
+    }
+  }).then(function (res) {
+    orders = res.data;
+    markup = generateMarkup(orders);
+    orderTableBody.innerHTML = markup;
+  })["catch"](function (err) {
+    console.log(err);
+  });
+
+  function generateMarkup(orders) {}
+};
 
 /***/ }),
 

@@ -6,7 +6,7 @@ class OrderController {
       status: { $ne: "completed" },
     })
       .sort({ createdAt: -1 })
-      .populate("customerId - password")
+      .populate("customerId", "- password")
       .exec((err, orders) => {
         res.render("admin/orders");
       });
