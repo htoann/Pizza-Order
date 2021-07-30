@@ -11,6 +11,7 @@ const MongoStore = require("connect-mongo");
 const dbURI = process.env.MONGODB_URI;
 const passport = require("passport");
 const passportInit = require("./app/config/passport");
+const cors = require("cors");
 
 // Database connection
 mongoose
@@ -34,6 +35,7 @@ app.use(
   })
 );
 
+app.use(cors());
 app.use(flash());
 
 // Assets
