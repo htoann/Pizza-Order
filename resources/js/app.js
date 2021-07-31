@@ -45,13 +45,21 @@ if (adminAreaPath.includes("admin")) {
   initAdmin();
 }
 
-function removeItem(req, pizza) {
-  delete req.session.cart.items[pizza];
+function deleteItem(pizza) {
+  axios
+    .post("/delete-cart", pizza)
+    .then((res) => {
+      window.location.assign("/cart");
+      cartCouter.innerText = res.data.totalQty;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 deleteCartButton.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let pizza = btn.getAttribute("data-pizza-id");
-    removeItem(pizza);
+    deleteItem(pizza);
   });
 });

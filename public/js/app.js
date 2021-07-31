@@ -1940,14 +1940,19 @@ if (adminAreaPath.includes("admin")) {
   (0,_admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin)();
 }
 
-function removeItem(req, pizza) {
-  delete req.session.cart.items[pizza];
+function deleteItem(pizza) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/delete-cart", pizza).then(function (res) {
+    window.location.assign("/cart");
+    cartCouter.innerText = res.data.totalQty;
+  })["catch"](function (err) {
+    console.log(err);
+  });
 }
 
 deleteCartButton.forEach(function (btn) {
   btn.addEventListener("click", function (e) {
     var pizza = btn.getAttribute("data-pizza-id");
-    removeItem(pizza);
+    deleteItem(pizza);
   });
 });
 

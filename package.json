@@ -7,7 +7,7 @@
     "dev": "nodemon server",
     "start": "node server",
     "development": "mix",
-    "watch": "mix watch",
+    "w": "mix watch",
     "watch-poll": "mix watch -- --watch-options-poll=1000",
     "hot": "mix watch --hot",
     "production": "mix --production"

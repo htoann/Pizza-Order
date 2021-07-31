@@ -16,8 +16,10 @@ module.exports = function initRoute(app) {
   app.post("/register", authController.postRegister);
   app.get("/logout", authController.logout);
 
+  // Cart routes
   app.get("/cart", cartController.index);
   app.post("/update-cart", cartController.update);
+  app.post("/delete-cart", cartController.delete);
 
   // Customer routes
   app.post("/orders", auth, orderController.store);

@@ -1,4 +1,5 @@
 const { json } = require("express");
+const Order = require("../../../models/Order");
 
 class CartController {
   index(req, res) {
@@ -29,6 +30,17 @@ class CartController {
       cart.totalQty++;
       cart.totalPrice += req.body.price;
     }
+    return res.json({ totalQty: req.session.cart.totalQty });
+  }
+
+  delete(req, res) {
+    let cart = req.session.cart;
+    const itemId = Object.keys(req.body)[0];
+
+    cart.totalQty -= cart.items[itemId].qty;
+    cart.totalPrice -= cart.items[itemId].item.price * cart.items[itemId].qty;
+
+    delete cart.items[itemId];
     return res.json({ totalQty: req.session.cart.totalQty });
   }
 }
