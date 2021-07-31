@@ -1851,7 +1851,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 
 
-function initAdmin() {
+function initAdmin(socket) {
   var orderTableBody = document.querySelector("#orderTableBody");
   var orders = [];
   var markup;
@@ -1861,7 +1861,6 @@ function initAdmin() {
     }
   }).then(function (res) {
     orders = res.data;
-    console.log(orders);
     markup = generateMarkup(orders);
     orderTableBody.innerHTML = markup;
   })["catch"](function (err) {
@@ -1870,8 +1869,9 @@ function initAdmin() {
 
   function renderItems(items) {
     var parsedItems = Object.values(items);
+    console.log(parsedItems);
     return parsedItems.map(function (menuItem) {
-      return "\n                <p>".concat(menuItem.items.name, " - ").concat(menuItem.qty, " pcs </p>\n            ");
+      return "\n                <p>".concat(menuItem.item.name, " - ").concat(menuItem.qty, " pcs </p>\n            ");
     }).join("");
   }
 
@@ -1902,9 +1902,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var addToCart = document.querySelectorAll(".add-to-cart");
 var cartCouter = document.querySelector("#cartCouter");
+var deleteCartButton = document.querySelector("#deleteCartButton");
 
 function updateCart(pizza) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/update-cart", pizza).then(function (res, req) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/update-cart", pizza).then(function (res) {
     cartCouter.innerText = res.data.totalQty;
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
       layout: "centerRight",
@@ -1933,7 +1934,16 @@ addToCart.forEach(function (btn) {
     updateCart(pizza);
   });
 });
-(0,_admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin)();
+var adminAreaPath = window.location.pathname;
+
+if (adminAreaPath.includes("admin")) {
+  (0,_admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin)();
+}
+
+deleteCartButton.addEventListener("click", function (e) {
+  var pizza = deleteCartButton;
+  console.log(pizza);
+});
 
 /***/ }),
 

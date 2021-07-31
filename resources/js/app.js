@@ -4,11 +4,12 @@ import { initAdmin } from "./admin";
 
 let addToCart = document.querySelectorAll(".add-to-cart");
 let cartCouter = document.querySelector("#cartCouter");
+let deleteCartButton = document.querySelector("#deleteCartButton");
 
 function updateCart(pizza) {
   axios
     .post("/update-cart", pizza)
-    .then((res, req) => {
+    .then((res) => {
       cartCouter.innerText = res.data.totalQty;
       new Noty({
         layout: "centerRight",
@@ -39,4 +40,12 @@ addToCart.forEach((btn) => {
   });
 });
 
-initAdmin();
+let adminAreaPath = window.location.pathname;
+if (adminAreaPath.includes("admin")) {
+  initAdmin();
+}
+
+deleteCartButton.addEventListener("click", (e) => {
+  let pizza = deleteCartButton;
+  console.log(pizza);
+});

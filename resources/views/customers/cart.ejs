@@ -25,6 +25,8 @@
                         <span class="font-bold text-lg">
                             <%= pizza.item.price * pizza.qty %> $
                         </span>
+                        <button class="ml-12" id="deleteCartButton"
+                            data-pizza-id="<%= pizza.item._id %>">Delete</button>
                     </div>
                     <% } %>
             </div>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 
-export function initAdmin() {
+export function initAdmin(socket) {
   const orderTableBody = document.querySelector("#orderTableBody");
   let orders = [];
   let markup;
@@ -14,7 +14,6 @@ export function initAdmin() {
     })
     .then((res) => {
       orders = res.data;
-      console.log(orders);
       markup = generateMarkup(orders);
       orderTableBody.innerHTML = markup;
     })
@@ -24,10 +23,11 @@ export function initAdmin() {
 
   function renderItems(items) {
     let parsedItems = Object.values(items);
+    console.log(parsedItems);
     return parsedItems
       .map((menuItem) => {
         return `
-                <p>${menuItem.items.name} - ${menuItem.qty} pcs </p>
+                <p>${menuItem.item.name} - ${menuItem.qty} pcs </p>
             `;
       })
       .join("");
