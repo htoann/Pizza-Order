@@ -4,7 +4,7 @@ import { initAdmin } from "./admin";
 
 let addToCart = document.querySelectorAll(".add-to-cart");
 let cartCouter = document.querySelector("#cartCouter");
-let deleteCartButton = document.querySelector("#deleteCartButton");
+let deleteCartButton = document.querySelectorAll("#deleteCartButton");
 
 function updateCart(pizza) {
   axios
@@ -45,7 +45,13 @@ if (adminAreaPath.includes("admin")) {
   initAdmin();
 }
 
-deleteCartButton.addEventListener("click", (e) => {
-  let pizza = deleteCartButton;
-  console.log(pizza);
+function removeItem(req, pizza) {
+  delete req.session.cart.items[pizza];
+}
+
+deleteCartButton.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    let pizza = btn.getAttribute("data-pizza-id");
+    removeItem(pizza);
+  });
 });

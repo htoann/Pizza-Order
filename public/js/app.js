@@ -1902,7 +1902,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var addToCart = document.querySelectorAll(".add-to-cart");
 var cartCouter = document.querySelector("#cartCouter");
-var deleteCartButton = document.querySelector("#deleteCartButton");
+var deleteCartButton = document.querySelectorAll("#deleteCartButton");
 
 function updateCart(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post("/update-cart", pizza).then(function (res) {
@@ -1940,9 +1940,15 @@ if (adminAreaPath.includes("admin")) {
   (0,_admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin)();
 }
 
-deleteCartButton.addEventListener("click", function (e) {
-  var pizza = deleteCartButton;
-  console.log(pizza);
+function removeItem(req, pizza) {
+  delete req.session.cart.items[pizza];
+}
+
+deleteCartButton.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    var pizza = btn.getAttribute("data-pizza-id");
+    removeItem(pizza);
+  });
 });
 
 /***/ }),
