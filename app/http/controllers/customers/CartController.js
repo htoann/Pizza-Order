@@ -41,6 +41,7 @@ class CartController {
     cart.totalPrice -= cart.items[itemId].item.price * cart.items[itemId].qty;
 
     delete cart.items[itemId];
+
     return res.json({ totalQty: req.session.cart.totalQty });
   }
 }

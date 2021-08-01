@@ -3,6 +3,8 @@ const authController = require("../app/http/controllers/AuthController");
 const cartController = require("../app/http/controllers/customers/CartController");
 const orderController = require("../app/http/controllers/customers/OrderController");
 const adminOrderController = require("../app/http/controllers/admin/OrderController");
+const statusController = require("../app/http/controllers/admin/StatusController");
+
 const guest = require("../app/http/middleware/guest");
 const auth = require("../app/http/middleware/auth");
 const admin = require("../app/http/middleware/admin");
@@ -10,6 +12,7 @@ const admin = require("../app/http/middleware/admin");
 module.exports = function initRoute(app) {
   app.get("/", homeController.index);
 
+  // Auth routes
   app.get("/login", guest, authController.login);
   app.post("/login", authController.postLogin);
   app.get("/register", guest, authController.register);
@@ -24,11 +27,13 @@ module.exports = function initRoute(app) {
   // Customer routes
   app.get("/customer/orders", auth, orderController.index);
   app.post("/orders", auth, orderController.store);
-  app.post("/remove-order", auth, orderController.cancel);
+  app.post("/cancel-order", auth, orderController.cancel);
 
   // Admin routes
   app.get("/admin/orders", admin, adminOrderController.index);
+  app.get("/admin/order/status", admin, statusController.update);
 
+  // 404 Not Found routes
   app.get("*", (req, res) => {
     return res.render("404");
   });

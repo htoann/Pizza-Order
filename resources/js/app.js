@@ -24,13 +24,7 @@ function updateCart(pizza) {
       }).show();
     })
     .catch((err) => {
-      new Noty({
-        layout: "centerRight",
-        theme: "light",
-        type: "error",
-        timeout: 1000,
-        text: "Something went wrong",
-      }).show();
+      console.log(err);
     });
 }
 
