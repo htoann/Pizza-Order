@@ -31,6 +31,15 @@ class OrderController {
         return res.redirect("/cart");
       });
   }
+
+  cancel(req, res) {
+    const orderId = Object.keys(req.body)[0];
+
+    Order.findById(orderId).then((order) => {
+      order.remove();
+      return res.redirect("/customers/orders");
+    });
+  }
 }
 
 module.exports = new OrderController();

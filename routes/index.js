@@ -24,6 +24,7 @@ module.exports = function initRoute(app) {
   // Customer routes
   app.get("/customer/orders", auth, orderController.index);
   app.post("/orders", auth, orderController.store);
+  app.post("/cancel-order", auth, orderController.cancel);
 
   // Admin routes
   app.get("/admin/orders", admin, adminOrderController.index);

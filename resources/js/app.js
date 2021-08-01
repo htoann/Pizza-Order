@@ -46,6 +46,7 @@ if (adminAreaPath.includes("admin")) {
   initAdmin();
 }
 
+// Delete items in cart
 function deleteItem(pizza) {
   axios
     .post("/delete-cart", pizza)
@@ -62,5 +63,24 @@ deleteCartButton.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let pizza = btn.getAttribute("data-pizza-id");
     deleteItem(pizza);
+  });
+});
+
+// Cancel Orders
+function cancelOrder(pizza) {
+  axios
+    .post("/cancel-order", pizza)
+    .then(() => {
+      window.location.assign("/customer/orders");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+cancelOrderButton.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    let pizza = btn.getAttribute("data-pizza-id");
+    cancelOrder(pizza);
   });
 });

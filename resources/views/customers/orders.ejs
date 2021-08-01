@@ -40,9 +40,11 @@
                     <%= order.address %>
                   </td>
                   <td class="border px-4 py-2 flex justify-between">
-                    <%= moment(order.createdAt).format('LLL') %>
-                      <button data-pizza-id="<%= order._id %>" id="cancelOrderButton"
-                        class="btn-primary px-2 py-2 rounded text-white">Cancel</button>
+                    <span class="my-auto">
+                      <%= moment(order.createdAt).format('LLL') %>
+                    </span>
+                    <button data-pizza-id="<%= order._id %>" id="cancelOrderButton"
+                      class="btn-primary px-2 py-2 rounded text-white">Cancel</button>
                   </td>
                 </tr>
                 <% }) %>

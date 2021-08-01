@@ -1939,7 +1939,8 @@ var adminAreaPath = window.location.pathname;
 
 if (adminAreaPath.includes("admin")) {
   (0,_admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin)();
-}
+} // Delete items in cart
+
 
 function deleteItem(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post("/delete-cart", pizza).then(function (res) {
@@ -1954,6 +1955,21 @@ deleteCartButton.forEach(function (btn) {
   btn.addEventListener("click", function (e) {
     var pizza = btn.getAttribute("data-pizza-id");
     deleteItem(pizza);
+  });
+}); // Cancel Orders
+
+function cancelOrder(pizza) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/cancel-order", pizza).then(function () {
+    window.location.assign("/customer/orders");
+  })["catch"](function (err) {
+    console.log(err);
+  });
+}
+
+cancelOrderButton.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    var pizza = btn.getAttribute("data-pizza-id");
+    cancelOrder(pizza);
   });
 });
 
