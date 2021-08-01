@@ -18,6 +18,7 @@ class OrderController {
       items: req.session.cart.items,
       phone,
       address,
+      paymentType,
     })
       .save()
       .then((result) => {

@@ -22,9 +22,13 @@ module.exports = function initRoute(app) {
   app.post("/delete-cart", cartController.delete);
 
   // Customer routes
-  app.post("/orders", auth, orderController.store);
   app.get("/customer/orders", auth, orderController.index);
+  app.post("/orders", auth, orderController.store);
 
   // Admin routes
   app.get("/admin/orders", admin, adminOrderController.index);
+
+  app.get("*", (req, res) => {
+    return res.render("404");
+  });
 };

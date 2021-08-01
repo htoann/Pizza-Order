@@ -5,6 +5,7 @@ import { initAdmin } from "./admin";
 let addToCart = document.querySelectorAll(".add-to-cart");
 let cartCouter = document.querySelector("#cartCouter");
 let deleteCartButton = document.querySelectorAll("#deleteCartButton");
+let cancelOrderButton = document.querySelectorAll("#cancelOrderButton");
 
 function updateCart(pizza) {
   axios
