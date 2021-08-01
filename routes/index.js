@@ -1,40 +1,21 @@
-const homeController = require("../app/http/controllers/HomeController");
-const authController = require("../app/http/controllers/AuthController");
-const cartController = require("../app/http/controllers/customers/CartController");
-const orderController = require("../app/http/controllers/customers/OrderController");
-const adminOrderController = require("../app/http/controllers/admin/OrderController");
-const statusController = require("../app/http/controllers/admin/StatusController");
-
-const guest = require("../app/http/middleware/guest");
-const auth = require("../app/http/middleware/auth");
-const admin = require("../app/http/middleware/admin");
+const homeRouter = require("./homeRouter");
+const authRouter = require("./authRouter");
+const cartRouter = require("./cartRouter");
+const customerRouter = require("./customerRouter");
+const adminRouter = require("./customerRouter");
 
 module.exports = function initRoute(app) {
-  app.get("/", homeController.index);
+  app.use("/auth", authRouter);
 
-  // Auth routes
-  app.get("/login", guest, authController.login);
-  app.post("/login", authController.postLogin);
-  app.get("/register", guest, authController.register);
-  app.post("/register", authController.postRegister);
-  app.get("/logout", authController.logout);
+  app.use("/customer", customerRouter);
 
-  // Cart routes
-  app.get("/cart", cartController.index);
-  app.post("/update-cart", cartController.update);
-  app.post("/delete-cart", cartController.delete);
+  app.use("/admin", adminRouter);
 
-  // Customer routes
-  app.get("/customer/orders", auth, orderController.index);
-  app.post("/orders", auth, orderController.store);
-  app.post("/cancel-order", auth, orderController.cancel);
+  app.use("/", cartRouter);
 
-  // Admin routes
-  app.get("/admin/orders", admin, adminOrderController.index);
-  app.get("/admin/order/status", admin, statusController.update);
+  app.use("/", homeRouter);
 
-  // 404 Not Found routes
-  app.get("*", (req, res) => {
-    return res.render("404");
+  app.get((req, res) => {
+    return res.status(404).render("404");
   });
 };

@@ -8,7 +8,7 @@
         Register
       </h2>
     </div>
-    <form class="mt-8 space-y-6" action="/register" method="POST">
+    <form class="mt-8 space-y-6" action="/auth/register" method="POST">
       <% if(messages.error) { %>
         <span class="text-red-500 text-lg font-bold">
           <%= messages.error %>
@@ -44,7 +44,7 @@
             </div>
 
             <div class="text-sm">
-              <a href="/login" class="text-indigo-600 hover:text-indigo-500 font-bold text-base">
+              <a href="/auth/login" class="text-indigo-600 hover:text-indigo-500 font-bold text-base">
                 Already have account?
               </a>
             </div>

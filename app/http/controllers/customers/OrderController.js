@@ -33,12 +33,20 @@ class OrderController {
   }
 
   cancel(req, res) {
-    const orderId = Object.keys(req.body)[0];
-
-    Order.findById(orderId).then((order) => {
-      order.remove();
-      return res.redirect("/customers/orders");
+    Order.deleteOne({ _id: req.body.orderId }, (err, data) => {
+      return res.redirect("/customer/orders");
     });
+  }
+
+  async status(req, res) {
+    const order = await Order.findById(req.params.id);
+
+    // Authorize user
+    if (req.user._id.toString() === order.customerId.toString()) {
+      return res.render("customers/status", { order });
+    }
+
+    return res.redirect("/");
   }
 }
 

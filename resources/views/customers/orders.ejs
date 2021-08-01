@@ -43,8 +43,10 @@
                     <span class="my-auto">
                       <%= moment(order.createdAt).format('LLL') %>
                     </span>
-                    <button data-pizza-id="<%= order._id %>" id="cancelOrderButton"
-                      class="btn-primary px-2 py-2 rounded text-white">Cancel</button>
+                    <form action="/customer/cancel-order" method="POST">
+                      <button value="<%= order._id %>" name="orderId"
+                        class="btn-primary px-2 py-2 rounded text-white">Cancel</button>
+                    </form>
                   </td>
                 </tr>
                 <% }) %>

@@ -21,7 +21,7 @@ class AuthController {
   postLogin(req, res, next) {
     passport.authenticate("local", {
       successRedirect: _getRedirectUrl(req),
-      failureRedirect: "/login",
+      failureRedirect: "/auth/login",
       failureFlash: true,
     })(req, res, next);
   }
@@ -35,7 +35,7 @@ class AuthController {
         req.flash("error", "Email already exists");
         req.flash("name", name);
         req.flash("email", email);
-        return res.redirect("/register");
+        return res.redirect("/auth/register");
       }
     });
 
@@ -56,13 +56,13 @@ class AuthController {
       })
       .catch((err) => {
         req.flash("error", "Something went wrong");
-        return res.redirect("/register");
+        return res.redirect("/auth/register");
       });
   }
 
   logout(req, res) {
     req.logout();
-    res.redirect("/login");
+    res.redirect("/auth/login");
   }
 }
 

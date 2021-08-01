@@ -12,6 +12,7 @@ const dbURI = process.env.MONGODB_URI;
 const passport = require("passport");
 const passportInit = require("./app/config/passport");
 const cors = require("cors");
+const routesInit = require("./routes/index.js");
 
 // Database connection
 mongoose
@@ -60,7 +61,7 @@ app.use(expressLayout);
 app.set("views", path.join(__dirname, "/resources/views"));
 app.set("view engine", "ejs");
 
-require("./routes")(app);
+routesInit(app);
 
 app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);

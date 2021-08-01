@@ -5,7 +5,6 @@ import { initAdmin } from "./admin";
 let addToCart = document.querySelectorAll(".add-to-cart");
 let cartCouter = document.querySelector("#cartCouter");
 let deleteCartButton = document.querySelectorAll("#deleteCartButton");
-let cancelOrderButton = document.querySelectorAll("#cancelOrderButton");
 
 function updateCart(pizza) {
   axios
@@ -57,24 +56,5 @@ deleteCartButton.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let pizza = btn.getAttribute("data-pizza-id");
     deleteItem(pizza);
-  });
-});
-
-// Cancel Orders
-function cancelOrder(pizza) {
-  axios
-    .post("/cancel-order", pizza)
-    .then(() => {
-      window.location.assign("/customer/orders");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
-cancelOrderButton.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    let pizza = btn.getAttribute("data-pizza-id");
-    cancelOrder(pizza);
   });
 });

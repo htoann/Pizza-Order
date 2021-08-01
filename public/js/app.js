@@ -1903,7 +1903,6 @@ __webpack_require__.r(__webpack_exports__);
 var addToCart = document.querySelectorAll(".add-to-cart");
 var cartCouter = document.querySelector("#cartCouter");
 var deleteCartButton = document.querySelectorAll("#deleteCartButton");
-var cancelOrderButton = document.querySelectorAll("#cancelOrderButton");
 
 function updateCart(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post("/update-cart", pizza).then(function (res) {
@@ -1949,21 +1948,6 @@ deleteCartButton.forEach(function (btn) {
   btn.addEventListener("click", function (e) {
     var pizza = btn.getAttribute("data-pizza-id");
     deleteItem(pizza);
-  });
-}); // Cancel Orders
-
-function cancelOrder(pizza) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/cancel-order", pizza).then(function () {
-    window.location.assign("/customer/orders");
-  })["catch"](function (err) {
-    console.log(err);
-  });
-}
-
-cancelOrderButton.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
-    var pizza = btn.getAttribute("data-pizza-id");
-    cancelOrder(pizza);
   });
 });
 

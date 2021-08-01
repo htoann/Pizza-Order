@@ -40,7 +40,7 @@
                 </div>
                 <% if(user) { %>
                     <div>
-                        <form action="/orders" method="POST" class="mt-12">
+                        <form action="/customer/orders" method="POST" class="mt-12">
                             <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" type="text"
                                 placeholder="Phone number" required>
                             <input name="address" class="border border-gray-400 p-2 w-1/2" type="text"
@@ -53,7 +53,7 @@
                     </div>
                     <% } else { %>
                         <a class="inline-block cursor-pointer btn-primary mt-4 px-6 py-2 rounded-full text-white font-bold mt-6"
-                            href="/login">Login to continue</a>
+                            href="/auth/login">Login to continue</a>
                         <% } %>
             </div>
         </div>
