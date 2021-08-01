@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 
 // Set Template engine
 app.use(expressLayout);
-app.set("views", path.join(__dirname, "/resources/views"));
+app.set("views", path.join(__dirname, "/src/views"));
 app.set("view engine", "ejs");
 
 routesInit(app);
