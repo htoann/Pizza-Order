@@ -1,11 +1,11 @@
 const homeController = require("../app/http/controllers/homeController");
-const authController = require("../app/http/controllers/AuthController");
-const cartController = require("../app/http/controllers/customers/CartController");
+const authController = require("../app/http/controllers/authController");
+const cartController = require("../app/http/controllers/customers/cartController");
 const orderController = require("../app/http/controllers/customers/OrderController");
 const adminOrderController = require("../app/http/controllers/admin/OrderController");
-const guest = require("../app/http/middleware/guest");
-const auth = require("../app/http/middleware/auth");
-const admin = require("../app/http/middleware/admin");
+const guest = require("../app/http/middleware/Guest");
+const auth = require("../app/http/middleware/Auth");
+const admin = require("../app/http/middleware/Admin");
 
 module.exports = function initRoute(app) {
   app.get("/", homeController.index);
