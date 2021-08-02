@@ -182,3 +182,18 @@ section.status {
 .status-box ul li:nth-child(5):before {
   background: $secondary;
 }
+
+// Order Completed
+.status-box ul li.step-completed:before {
+  background: $gray;
+}
+
+.step-completed {
+  color: $gray;
+}
+
+// Order Current Status
+
+.current {
+  color: $primary;
+}

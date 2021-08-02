@@ -1897,6 +1897,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin */ "./src/js/admin.js");
+/* harmony import */ var _update_status__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./update-status */ "./src/js/update-status.js");
+
 
 
 
@@ -1936,9 +1938,8 @@ if (adminAreaPath.includes("admin")) {
 
 
 function deleteItem(pizza) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/delete-cart", pizza).then(function (res) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/delete-cart", pizza).then(function () {
     window.location.assign("/cart");
-    cartCouter.innerText = res.data.totalQty;
   })["catch"](function (err) {
     console.log(err);
   });
@@ -1950,6 +1951,43 @@ deleteCartButton.forEach(function (btn) {
     deleteItem(pizza);
   });
 });
+(0,_update_status__WEBPACK_IMPORTED_MODULE_3__.updateStatus)();
+
+/***/ }),
+
+/***/ "./src/js/update-status.js":
+/*!*********************************!*\
+  !*** ./src/js/update-status.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "updateStatus": () => (/* binding */ updateStatus)
+/* harmony export */ });
+var statuses = document.querySelectorAll(".status-line");
+var hiddenInput = document.querySelector("#hiddenInput");
+function updateStatus() {
+  var order = hiddenInput ? hiddenInput.value : null;
+  order = JSON.parse(order);
+  var stepCompleted = true;
+  statuses.forEach(function (status) {
+    var dataProp = status.dataset.status;
+
+    if (stepCompleted) {
+      status.classList.add("step-completed");
+    }
+
+    if (dataProp === order.status) {
+      stepCompleted = false;
+
+      if (status.nextElementSibling) {
+        status.nextElementSibling.classList.add("current");
+      }
+    }
+  });
+}
 
 /***/ }),
 

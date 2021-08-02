@@ -1,6 +1,7 @@
 import axios from "axios";
 import Noty from "noty";
 import { initAdmin } from "./admin";
+import { updateStatus } from "./update-status";
 
 let addToCart = document.querySelectorAll(".add-to-cart");
 let cartCouter = document.querySelector("#cartCouter");
@@ -43,9 +44,8 @@ if (adminAreaPath.includes("admin")) {
 function deleteItem(pizza) {
   axios
     .post("/delete-cart", pizza)
-    .then((res) => {
+    .then(() => {
       window.location.assign("/cart");
-      cartCouter.innerText = res.data.totalQty;
     })
     .catch((err) => {
       console.log(err);
@@ -58,3 +58,5 @@ deleteCartButton.forEach((btn) => {
     deleteItem(pizza);
   });
 });
+
+updateStatus();

@@ -484,3 +484,15 @@ section.status {
 .status-box ul li:nth-child(5):before {
   background: #f8f8f8;
 }
+
+.status-box ul li.step-completed:before {
+  background: #ccc;
+}
+
+.step-completed {
+  color: #ccc;
+}
+
+.current {
+  color: #fe5f1e;
+}

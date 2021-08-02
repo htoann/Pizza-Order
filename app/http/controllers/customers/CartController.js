@@ -39,8 +39,15 @@ class CartController {
     cart.totalQty -= cart.items[itemId].qty;
     cart.totalPrice -= cart.items[itemId].item.price * cart.items[itemId].qty;
     delete cart.items[itemId];
+
+    if (req.session.cart.totalQty == 0) {
+      delete req.session.cart;
+
+      return res.redirect("/cart");
+    }
+
     return res.json({
-      totalQty: req.session.cart.totalQty ? req.session.cart.totalQty : 0,
+      totalQty: req.session.cart.totalQty,
     });
   }
 }

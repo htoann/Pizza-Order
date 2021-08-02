@@ -24,6 +24,7 @@ class OrderController {
       .then((result) => {
         req.flash("success", "Order placed successfully");
         delete req.session.cart;
+
         return res.redirect("/customer/orders");
       })
       .catch((err) => {
@@ -48,8 +49,6 @@ class OrderController {
 
     return res.redirect("/");
   }
-
-  
 }
 
 module.exports = new OrderController();
