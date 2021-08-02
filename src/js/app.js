@@ -59,4 +59,5 @@ deleteCartButton.forEach((btn) => {
   });
 });
 
+// Update status
 updateStatus();

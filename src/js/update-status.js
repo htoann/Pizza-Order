@@ -1,4 +1,4 @@
-let statuses = document.querySelectorAll(".status-line");
+let statuses = document.querySelectorAll(".status_line");
 let hiddenInput = document.querySelector("#hiddenInput");
 
 export function updateStatus() {
@@ -6,7 +6,9 @@ export function updateStatus() {
   order = JSON.parse(order);
 
   let stepCompleted = true;
+
   statuses.forEach((status) => {
+    console.log(status.dataset.status);
     let dataProp = status.dataset.status;
 
     if (stepCompleted) {
@@ -15,6 +17,7 @@ export function updateStatus() {
 
     if (dataProp === order.status) {
       stepCompleted = false;
+
       if (status.nextElementSibling) {
         status.nextElementSibling.classList.add("current");
       }

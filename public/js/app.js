@@ -1950,7 +1950,8 @@ deleteCartButton.forEach(function (btn) {
     var pizza = btn.getAttribute("data-pizza-id");
     deleteItem(pizza);
   });
-});
+}); // Update status
+
 (0,_update_status__WEBPACK_IMPORTED_MODULE_3__.updateStatus)();
 
 /***/ }),
@@ -1966,13 +1967,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "updateStatus": () => (/* binding */ updateStatus)
 /* harmony export */ });
-var statuses = document.querySelectorAll(".status-line");
+var statuses = document.querySelectorAll(".status_line");
 var hiddenInput = document.querySelector("#hiddenInput");
 function updateStatus() {
   var order = hiddenInput ? hiddenInput.value : null;
   order = JSON.parse(order);
   var stepCompleted = true;
   statuses.forEach(function (status) {
+    console.log(status.dataset.status);
     var dataProp = status.dataset.status;
 
     if (stepCompleted) {

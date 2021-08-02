@@ -35,12 +35,14 @@ class CartController {
 
   delete(req, res) {
     let cart = req.session.cart;
-    const itemId = Object.keys(req.body)[0];
-    cart.totalQty -= cart.items[itemId].qty;
-    cart.totalPrice -= cart.items[itemId].item.price * cart.items[itemId].qty;
+    let itemId = Object.keys(req.body)[0];
+    let listItems = cart.items[itemId];
+
+    cart.totalQty -= listItems.qty;
+    cart.totalPrice -= listItems.item.price * listItems.qty;
     delete cart.items[itemId];
 
-    if (req.session.cart.totalQty == 0) {
+    if (cart.totalQty == 0) {
       delete req.session.cart;
 
       return res.redirect("/cart");
