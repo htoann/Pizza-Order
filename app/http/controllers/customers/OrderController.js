@@ -48,6 +48,8 @@ class OrderController {
 
     return res.redirect("/");
   }
+
+  
 }
 
 module.exports = new OrderController();

@@ -2,14 +2,14 @@ const homeRouter = require("./homeRouter");
 const authRouter = require("./authRouter");
 const cartRouter = require("./cartRouter");
 const customerRouter = require("./customerRouter");
-const adminRouter = require("./customerRouter");
+const adminRouter = require("./adminRouter");
 
 module.exports = function initRoute(app) {
   app.use("/auth", authRouter);
 
-  app.use("/customer", customerRouter);
-
   app.use("/admin", adminRouter);
+
+  app.use("/customer", customerRouter);
 
   app.use("/", cartRouter);
 
