@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap);
+@charset "UTF-8";
 .noty_layout_mixin, #noty_layout__centerRight, #noty_layout__centerLeft, #noty_layout__center, #noty_layout__bottomRight, #noty_layout__bottomCenter, #noty_layout__bottomLeft, #noty_layout__bottom, #noty_layout__topRight, #noty_layout__topCenter, #noty_layout__topLeft, #noty_layout__top {
   position: fixed;
   margin: 0;
@@ -341,17 +342,38 @@ body {
   color: #232323;
 }
 
+.btn-primary {
+  background: #fe5f1e;
+  transition: all 0.05s ease-in-out;
+}
+.btn-primary:hover {
+  background: #b23301;
+}
+
+a.link {
+  color: #fe5f1e;
+}
+
+.size {
+  background: #f8f8f8;
+}
+
+.noty_theme__light {
+  border-radius: 50px !important;
+  padding-left: 8px !important;
+  margin-top: 10px !important;
+  bottom: 355px !important;
+}
+
 nav {
   background-color: #fff;
 }
-
 nav li:last-child a {
   background: #fe5f1e;
 }
 nav li:last-child a:hover {
   background: #b23301;
 }
-
 nav li a {
   transition: all 0.05s ease-in-out;
   font-weight: bold;
@@ -365,10 +387,6 @@ section.hero {
 }
 section.hero img {
   width: 94% !important;
-}
-
-.size {
-  background: #f8f8f8;
 }
 
 .add-to-cart {
@@ -385,42 +403,84 @@ section.hero img {
   outline: none;
 }
 
-.btn-primary {
-  background: #fe5f1e;
-  transition: all 0.05s ease-in-out;
-}
-.btn-primary:hover {
-  background: #b23301;
-}
-
-section.cart {
+section .cart {
   background: #f8f8f8;
 }
-section.cart .amount {
+section .cart .amount {
   color: #fe5f1e;
 }
-
-section.login {
+section .login {
   background: #f8f8f8;
   min-height: 70vh;
 }
-section.login a {
+section .login a {
   color: #fe5f1e;
 }
-section.login a:hover {
+section .login a:hover {
   color: #b23301;
 }
-section.login input {
+section .login input {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.noty_theme__light {
-  border-radius: 50px !important;
-  padding-left: 8px !important;
-  margin-top: 10px !important;
-  bottom: 355px !important;
+section.status {
+  background: #f8f8f8;
+  min-height: 735px;
 }
 
-a.link {
-  color: #fe5f1e;
+.status-box ul {
+  list-style-type: disc;
+  margin-left: 84px;
+}
+
+.status-box ul li span:before {
+  font-family: "Line Awesome Free";
+  font-size: 46px;
+  font-weight: 600;
+  position: absolute;
+  left: -9%;
+  color: inherit;
+}
+
+.status-box ul li:nth-child(1) span:before {
+  content: "";
+}
+
+.status-box ul li:nth-child(2) span:before {
+  content: "";
+}
+
+.status-box ul li:nth-child(3) span:before {
+  content: "";
+}
+
+.status-box ul li:nth-child(4) span:before {
+  content: "";
+}
+
+.status-box ul li:nth-child(5) span:before {
+  content: "";
+}
+
+.status-box ul li {
+  position: relative;
+}
+
+.status-box ul li:before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: -18.6px;
+  width: 2px;
+  height: 70%;
+  background: #232323;
+  margin-top: 10px;
+}
+
+.status-box ul li:nth-child(4):before {
+  height: 90%;
+}
+
+.status-box ul li:nth-child(5):before {
+  background: #f8f8f8;
 }

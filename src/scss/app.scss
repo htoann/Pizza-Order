@@ -2,8 +2,8 @@
 @import "~noty/src/noty.scss";
 @import "~noty/src/themes/mint.scss";
 @import "~noty/src/themes/light.scss";
-// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
 body {
   // font-family: "Lato", sans-serif;
@@ -12,79 +12,27 @@ body {
   color: $dark;
 }
 
-nav {
-  background-color: $pure;
-}
-
-nav li:last-child a {
+// Button
+.btn-primary {
   background: $primary;
+  transition: $smooth;
+
   &:hover {
     background: $primary-hover;
   }
 }
 
-nav li a {
-  transition: $smooth;
-  &:hover {
-    color: $primary;
-  }
-  font-weight: bold;
+// Link
+a.link {
+  color: $primary;
 }
 
-section.hero {
-  background: $secondary;
-  & img {
-    width: 94% !important;
-  }
-}
-
+// Pizza Size
 .size {
   background: $secondary;
 }
 
-.add-to-cart {
-  border: 2px solid $primary;
-  color: $primary;
-  transition: $smooth;
-  &:hover {
-    background: $primary;
-    border-color: $pure;
-    color: $pure;
-  }
-  &:focus {
-    outline: none;
-  }
-}
-
-.btn-primary {
-  background: $primary;
-  transition: $smooth;
-  &:hover {
-    background: $primary-hover;
-  }
-}
-
-section.cart {
-  background: $secondary;
-  .amount {
-    color: $primary;
-  }
-}
-
-section.login {
-  background: $secondary;
-  min-height: 70vh;
-  a {
-    color: $primary;
-    &:hover {
-      color: $primary-hover;
-    }
-  }
-  input {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  }
-}
-
+// Noty added items
 .noty_theme__light {
   border-radius: 50px !important;
   padding-left: 8px !important;
@@ -92,10 +40,75 @@ section.login {
   bottom: 355px !important;
 }
 
-a.link {
-  color: $primary;
+// Layout & Home
+nav {
+  background-color: $pure;
+
+  li:last-child a {
+    background: $primary;
+    &:hover {
+      background: $primary-hover;
+    }
+  }
+
+  li a {
+    transition: $smooth;
+    &:hover {
+      color: $primary;
+    }
+    font-weight: bold;
+  }
 }
 
+section.hero {
+  background: $secondary;
+
+  & img {
+    width: 94% !important;
+  }
+}
+
+.add-to-cart {
+  border: 2px solid $primary;
+  color: $primary;
+  transition: $smooth;
+
+  &:hover {
+    background: $primary;
+    border-color: $pure;
+    color: $pure;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Cart
+section {
+  .cart {
+    background: $secondary;
+    .amount {
+      color: $primary;
+    }
+  }
+
+  .login {
+    background: $secondary;
+    min-height: 70vh;
+    a {
+      color: $primary;
+      &:hover {
+        color: $primary-hover;
+      }
+    }
+    input {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+  }
+}
+
+// Hover Pizza
 // section.menu img {
 //   transition: transform 0.4s;
 //   z-index: -1;
@@ -104,3 +117,68 @@ a.link {
 //   transform: scale(1.1);
 //   z-index: -1;
 // }
+
+// Status Page
+
+section.status {
+  background: $secondary;
+  min-height: 735px;
+}
+
+.status-box ul {
+  list-style-type: disc;
+  margin-left: 84px;
+}
+
+// Icons
+.status-box ul li span:before {
+  font-family: "Line Awesome Free";
+  font-size: 46px;
+  font-weight: 600;
+  position: absolute;
+  left: -9%;
+  color: inherit;
+}
+.status-box ul li:nth-child(1) span:before {
+  content: "\f46c";
+}
+
+.status-box ul li:nth-child(2) span:before {
+  content: "\f560";
+}
+
+.status-box ul li:nth-child(3) span:before {
+  content: "\f818";
+}
+
+.status-box ul li:nth-child(4) span:before {
+  content: "\f0d1";
+}
+
+.status-box ul li:nth-child(5) span:before {
+  content: "\f582";
+}
+
+.status-box ul li {
+  position: relative;
+}
+
+// Line
+.status-box ul li:before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: -18.6px;
+  width: 2px;
+  height: 70%;
+  background: $dark;
+  margin-top: 10px;
+}
+
+.status-box ul li:nth-child(4):before {
+  height: 90%;
+}
+
+.status-box ul li:nth-child(5):before {
+  background: $secondary;
+}
