@@ -23,7 +23,6 @@ export function initAdmin(socket) {
 
   function renderItems(items) {
     let parsedItems = Object.values(items);
-    console.log(parsedItems);
     return parsedItems
       .map((menuItem) => {
         return `

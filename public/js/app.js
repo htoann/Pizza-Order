@@ -1869,7 +1869,6 @@ function initAdmin(socket) {
 
   function renderItems(items) {
     var parsedItems = Object.values(items);
-    console.log(parsedItems);
     return parsedItems.map(function (menuItem) {
       return "\n                <p>".concat(menuItem.item.name, " - ").concat(menuItem.qty, " pcs </p>\n            ");
     }).join("");

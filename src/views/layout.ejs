@@ -14,13 +14,13 @@
 
 <body>
   <nav class="sticky top-0">
-    <div class="mx-auto flex items-center justify-between py-4 container">
-      <a href="/">
+    <div class="mx-auto flex items-center justify-between py-4 container pl-3 md:pl-0">
+      <a class="hidden md:contents" href="/">
         <img src="/img/logo.png" alt="logo" /></a>
       <div>
         <ul class="flex items-center">
           <% if(user) { %>
-            <li class="ml-6">
+            <li class="ml-6 hidden md:contents">
               Welcome,
               <%= user.name %>
             </li class="ml-6">
