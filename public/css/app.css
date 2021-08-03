@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap);
 @charset "UTF-8";
 .noty_layout_mixin, #noty_layout__centerRight, #noty_layout__centerLeft, #noty_layout__center, #noty_layout__bottomRight, #noty_layout__bottomCenter, #noty_layout__bottomLeft, #noty_layout__bottom, #noty_layout__topRight, #noty_layout__topCenter, #noty_layout__topLeft, #noty_layout__top {
   position: fixed;
@@ -337,8 +337,8 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: "Noto Sans", sans-serif;
+  font-smooth: auto;
   color: #232323;
 }
 
@@ -495,4 +495,10 @@ section.status {
 
 .current {
   color: #fe5f1e;
+}
+
+.status-box ul li time {
+  float: right;
+  font-size: 18px;
+  color: #232323;
 }

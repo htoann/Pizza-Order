@@ -2,13 +2,11 @@
 @import "~noty/src/noty.scss";
 @import "~noty/src/themes/mint.scss";
 @import "~noty/src/themes/light.scss";
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
-// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
 
 body {
-  // font-family: "Lato", sans-serif;
-  font-family: "Open Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: "Noto Sans", sans-serif;
+  font-smooth: auto;
   color: $dark;
 }
 
@@ -196,4 +194,10 @@ section.status {
 
 .current {
   color: $primary;
+}
+
+.status-box ul li time {
+  float: right;
+  font-size: 18px;
+  color: $dark;
 }

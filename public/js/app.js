@@ -1967,14 +1967,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "updateStatus": () => (/* binding */ updateStatus)
 /* harmony export */ });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 var statuses = document.querySelectorAll(".status_line");
 var hiddenInput = document.querySelector("#hiddenInput");
+
 function updateStatus() {
   var order = hiddenInput ? hiddenInput.value : null;
   order = JSON.parse(order);
+  var time = document.createElement("time");
   var stepCompleted = true;
   statuses.forEach(function (status) {
-    console.log(status.dataset.status);
     var dataProp = status.dataset.status;
 
     if (stepCompleted) {
@@ -1983,6 +1986,8 @@ function updateStatus() {
 
     if (dataProp === order.status) {
       stepCompleted = false;
+      time.innerText = moment__WEBPACK_IMPORTED_MODULE_0___default()(order.updatedAt).format("LLL");
+      status.appendChild(time);
 
       if (status.nextElementSibling) {
         status.nextElementSibling.classList.add("current");
