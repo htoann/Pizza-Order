@@ -1849,6 +1849,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 function initAdmin(socket) {
@@ -1880,8 +1883,8 @@ function initAdmin(socket) {
     }).join("");
   }
 
-  socket.on("orderPlaced", function () {
-    new Noty({
+  socket.on("orderPlaced", function (order) {
+    new (noty__WEBPACK_IMPORTED_MODULE_2___default())({
       layout: "centerRight",
       theme: "light",
       type: "success",
@@ -1890,7 +1893,12 @@ function initAdmin(socket) {
       text: "New order!",
       killer: true
     }).show();
-  }); // Continue
+    orders.unshift(order);
+    orderTableBody.innerHTML = "";
+    orderTableBody.innerHTML = generateMarkup(orders);
+    console.log(orders.order);
+    console.log(order);
+  });
 }
 
 /***/ }),
@@ -1952,14 +1960,7 @@ addToCart.forEach(function (btn) {
     var pizza = JSON.parse(btn.dataset.pizza);
     updateCart(pizza);
   });
-});
-var adminAreaPath = window.location.pathname;
-
-if (adminAreaPath.includes("admin")) {
-  (0,_admin__WEBPACK_IMPORTED_MODULE_3__.initAdmin)();
-  socket.emit("join", "adminRoom");
-} // Delete items in cart
-
+}); // Delete items in cart
 
 function deleteItem(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post("/delete-cart", pizza).then(function () {
@@ -1974,12 +1975,20 @@ deleteCartButton.forEach(function (btn) {
     var pizza = btn.getAttribute("data-pizza-id");
     deleteItem(pizza);
   });
-}); // Socket
+});
+(0,_update_status__WEBPACK_IMPORTED_MODULE_4__.updateStatus)(order); // Socket
 
 var socket = io(); // Join socket
 
 if (order) {
   socket.emit("join", "order_".concat(order._id));
+}
+
+var adminAreaPath = window.location.pathname;
+
+if (adminAreaPath.includes("admin")) {
+  (0,_admin__WEBPACK_IMPORTED_MODULE_3__.initAdmin)(socket);
+  socket.emit("join", "adminRoom");
 }
 
 socket.on("orderUpdated", function (data) {

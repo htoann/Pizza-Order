@@ -3,6 +3,7 @@ const Order = require("../../../models/Order");
 
 class CartController {
   index(req, res) {
+    res.header("Cache-Control", "no-store");
     res.render("customers/cart");
   }
 

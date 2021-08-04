@@ -40,12 +40,6 @@ addToCart.forEach((btn) => {
   });
 });
 
-let adminAreaPath = window.location.pathname;
-if (adminAreaPath.includes("admin")) {
-  initAdmin();
-  socket.emit("join", "adminRoom");
-}
-
 // Delete items in cart
 function deleteItem(pizza) {
   axios
@@ -65,11 +59,19 @@ deleteCartButton.forEach((btn) => {
   });
 });
 
+updateStatus(order);
+
 // Socket
 let socket = io();
 // Join socket
 if (order) {
   socket.emit("join", `order_${order._id}`);
+}
+
+let adminAreaPath = window.location.pathname;
+if (adminAreaPath.includes("admin")) {
+  initAdmin(socket);
+  socket.emit("join", "adminRoom");
 }
 
 socket.on("orderUpdated", (data) => {
