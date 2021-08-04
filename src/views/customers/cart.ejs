@@ -2,12 +2,12 @@
 
 <section class="cart pt-16">
     <% if(session.cart) { %>
-        <div class="order container mx-auto w-1/2">
+        <div class="order container mx-auto xl:w-1/2">
             <div class="items-center flex border-b border-gray-300 pb-4">
                 <img src="/img/cart-black.png" alt="">
                 <h1 class="font-bold text-2xl ml-4">Order Summary</h1>
             </div>
-            <div class="pizza-list ">
+            <div class="pizza-list">
                 <% for(let pizza of Object.values(session.cart.items)) { %>
                     <div class="flex items-center my-8">
                         <img class="w-24" src="/img/<%= pizza.item.image %>" alt="">
@@ -22,19 +22,19 @@
                         <span class="flex-1">
                             <%= pizza.qty %> Pcs
                         </span>
-                        <span class="font-bold text-lg">
+                        <span class="font-bold block text-lg">
                             <%= pizza.item.price * pizza.qty %> $
                         </span>
-                        <button class="ml-12" id="deleteCartButton"
+                        <button class="mx-4 md:mx-0 md:ml-12 font-bold" id="deleteCartButton"
                             data-pizza-id="<%= pizza.item._id %>">Delete</button>
                     </div>
                     <% } %>
             </div>
             <hr>
-            <div class="text-right py-4">
+            <div class="text-center md:text-right py-4">
                 <div>
                     <span class="font-bold text-lg">Total Amount: </span>
-                    <span class="amount text-2xl font-bold ml-2">
+                    <span class="amount text-2xl font-bold md:ml-2">
                         <%= session.cart.totalPrice %>$
                     </span>
                 </div>
@@ -46,7 +46,7 @@
                             <input name="address" class="border border-gray-400 p-2 w-1/2" type="text"
                                 placeholder="Address" required>
                             <div>
-                                <button class="btn-primary mt-4 px-6 py-2 rounded-full text-white font-bold mt-6">Order
+                                <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Order
                                     Now</button>
                             </div>
                         </form>

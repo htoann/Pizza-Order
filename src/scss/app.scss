@@ -104,17 +104,21 @@ section {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
   }
+
+  #deleteCartButton {
+    color: $primary;
+  }
 }
 
 // Hover Pizza
-// section.menu img {
-//   transition: transform 0.4s;
-//   z-index: -1;
-// }
-// section.menu img:hover {
-//   transform: scale(1.1);
-//   z-index: -1;
-// }
+section.menu img {
+  transition: transform 0.3s;
+  z-index: -1;
+}
+section.menu img:hover {
+  transform: scale(1.2);
+  z-index: -1;
+}
 
 // Status Page
 
@@ -134,7 +138,7 @@ section.status {
   font-size: 46px;
   font-weight: 600;
   position: absolute;
-  left: -9%;
+  left: -90px;
   color: inherit;
 }
 .status-box ul li:nth-child(1) span:before {
@@ -200,4 +204,23 @@ section.status {
   float: right;
   font-size: 18px;
   color: $dark;
+}
+
+// Responsive
+@media (max-width: 1060px) {
+  .container {
+    max-width: 90%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .status-box ul li span:before {
+    font-size: 34px;
+  }
 }

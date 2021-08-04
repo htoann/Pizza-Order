@@ -422,6 +422,19 @@ section .login a:hover {
 section .login input {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+section #deleteCartButton {
+  color: #fe5f1e;
+}
+
+section.menu img {
+  transition: transform 0.3s;
+  z-index: -1;
+}
+
+section.menu img:hover {
+  transform: scale(1.2);
+  z-index: -1;
+}
 
 section.status {
   background: #f8f8f8;
@@ -438,7 +451,7 @@ section.status {
   font-size: 46px;
   font-weight: 600;
   position: absolute;
-  left: -9%;
+  left: -90px;
   color: inherit;
 }
 
@@ -501,4 +514,21 @@ section.status {
   float: right;
   font-size: 18px;
   color: #232323;
+}
+
+@media (max-width: 1060px) {
+  .container {
+    max-width: 90%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 768px) {
+  .status-box ul li span:before {
+    font-size: 34px;
+  }
 }
