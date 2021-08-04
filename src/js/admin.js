@@ -99,4 +99,18 @@ export function initAdmin(socket) {
       })
       .join("");
   }
+
+  socket.on("orderPlaced", () => {
+    new Noty({
+      layout: "centerRight",
+      theme: "light",
+      type: "success",
+      timeout: 1000,
+      progressBar: false,
+      text: "New order!",
+      killer: true,
+    }).show();
+  });
+
+  // Continue
 }

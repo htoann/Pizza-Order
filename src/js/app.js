@@ -1,11 +1,16 @@
 import axios from "axios";
 import Noty from "noty";
+import moment from "moment";
 import { initAdmin } from "./admin";
 import { updateStatus } from "./update-status";
 
 let addToCart = document.querySelectorAll(".add-to-cart");
 let cartCouter = document.querySelector("#cartCouter");
 let deleteCartButton = document.querySelectorAll("#deleteCartButton");
+
+let hiddenInput = document.querySelector("#hiddenInput");
+let order = hiddenInput ? hiddenInput.value : null;
+order = JSON.parse(order);
 
 function updateCart(pizza) {
   axios
@@ -38,6 +43,7 @@ addToCart.forEach((btn) => {
 let adminAreaPath = window.location.pathname;
 if (adminAreaPath.includes("admin")) {
   initAdmin();
+  socket.emit("join", "adminRoom");
 }
 
 // Delete items in cart
@@ -59,5 +65,25 @@ deleteCartButton.forEach((btn) => {
   });
 });
 
-// Update status
-updateStatus();
+// Socket
+let socket = io();
+// Join socket
+if (order) {
+  socket.emit("join", `order_${order._id}`);
+}
+
+socket.on("orderUpdated", (data) => {
+  const updatedOrder = { ...order };
+  updatedOrder.updatedAt = moment().format("LLL");
+  updatedOrder.status = data.status;
+  updateStatus(updatedOrder);
+  new Noty({
+    layout: "centerRight",
+    theme: "light",
+    type: "success",
+    timeout: 1000,
+    progressBar: false,
+    text: "Order updated",
+    killer: true,
+  }).show();
+});

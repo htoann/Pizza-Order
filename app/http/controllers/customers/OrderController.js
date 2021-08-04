@@ -25,6 +25,10 @@ class OrderController {
         req.flash("success", "Order placed successfully");
         delete req.session.cart;
 
+        // Emit
+        const eventEmiiter = req.app.get("eventEmitter");
+        eventEmiiter.emit("orderPlaced", result);
+
         return res.redirect("/customer/orders");
       })
       .catch((err) => {

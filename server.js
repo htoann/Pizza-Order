@@ -13,6 +13,7 @@ const passport = require("passport");
 const passportInit = require("./app/config/passport");
 const cors = require("cors");
 const routesInit = require("./routes/index.js");
+const Emitter = require("events");
 
 // Database connection
 mongoose
@@ -22,6 +23,10 @@ mongoose
     useCreateIndex: true,
   })
   .catch((err) => console.log(err));
+
+// Event emitter
+const eventEmitter = new Emitter();
+app.set("eventEmitter", eventEmitter);
 
 // Session config
 app.use(
@@ -63,6 +68,23 @@ app.set("view engine", "ejs");
 
 routesInit(app);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);
+});
+
+// Socket
+const io = require("socket.io")(server);
+io.on("connection", (socket) => {
+  // Join socket
+  socket.on("join", (orderId) => {
+    socket.join(orderId);
+  });
+});
+
+eventEmitter.on("orderUpdated", (data) => {
+  io.to(`order_${data.id}`).emit("orderUpdated", data);
+});
+
+eventEmitter.on("orderPlaced", (data) => {
+  io.to("adminRoom").emit("orderPlaced", data);
 });

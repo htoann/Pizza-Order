@@ -1,13 +1,14 @@
 let statuses = document.querySelectorAll(".status_line");
-let hiddenInput = document.querySelector("#hiddenInput");
 import moment from "moment";
 
-export function updateStatus() {
-  let order = hiddenInput ? hiddenInput.value : null;
-  order = JSON.parse(order);
+export function updateStatus(order) {
   let time = document.createElement("time");
-
   let stepCompleted = true;
+
+  statuses.forEach((status) => {
+    status.classList.remove("step-completed");
+    status.classList.remove("current");
+  });
 
   statuses.forEach((status) => {
     let dataProp = status.dataset.status;
