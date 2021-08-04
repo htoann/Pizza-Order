@@ -9,8 +9,10 @@ function OrderController() {
         .populate("customerId", "-password")
         .exec((err, orders) => {
           if (req.xhr) {
+            res.header("Cache-Control", "no-store");
             return res.json(orders);
           } else {
+            res.header("Cache-Control", "no-store");
             return res.render("admin/orders");
           }
         });

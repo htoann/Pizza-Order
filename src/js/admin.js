@@ -114,8 +114,5 @@ export function initAdmin(socket) {
     orders.unshift(order);
     orderTableBody.innerHTML = "";
     orderTableBody.innerHTML = generateMarkup(orders);
-
-    console.log(orders.order);
-    console.log(order);
   });
 }
