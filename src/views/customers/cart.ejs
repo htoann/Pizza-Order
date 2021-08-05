@@ -35,7 +35,7 @@
                 <div>
                     <span class="font-bold text-lg">Total Amount: </span>
                     <span class="amount text-2xl font-bold md:ml-2">
-                        <%= session.cart.totalPrice %> $
+                        <%= (session.cart.totalPrice).toFixed(2) %> $
                     </span>
                 </div>
                 <% if(user) { %>
