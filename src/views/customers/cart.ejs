@@ -10,7 +10,7 @@
             <div class="pizza-list">
                 <% for(let pizza of Object.values(session.cart.items)) { %>
                     <div class="flex items-center my-8">
-                        <img class="w-24" src="/img/<%= pizza.item.image %>" alt="">
+                        <img class="w-24" src="<%= pizza.item.image %>" alt="">
                         <div class="ml-4 flex-1">
                             <h1>
                                 <%= pizza.item.name %>
@@ -35,13 +35,13 @@
                 <div>
                     <span class="font-bold text-lg">Total Amount: </span>
                     <span class="amount text-2xl font-bold md:ml-2">
-                        <%= session.cart.totalPrice %>$
+                        <%= session.cart.totalPrice %> $
                     </span>
                 </div>
                 <% if(user) { %>
                     <div>
                         <form action="/customer/orders" method="POST" class="mt-12">
-                            <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" type="text"
+                            <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" type="number"
                                 placeholder="Phone number" required>
                             <input name="address" class="border border-gray-400 p-2 w-1/2" type="text"
                                 placeholder="Address" required>

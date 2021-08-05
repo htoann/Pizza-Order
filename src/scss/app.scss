@@ -108,15 +108,21 @@ section {
   #deleteCartButton {
     color: $primary;
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 // Hover Pizza
 section.menu img {
-  transition: transform 0.3s;
+  transition: transform 0.2s;
   z-index: -1;
 }
 section.menu img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   z-index: -1;
 }
 

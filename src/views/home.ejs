@@ -16,32 +16,120 @@
   </div>
 </section>
 
-<section class="menu container mx-auto py-4 md:pt-20 px-2 top-2" id="menu">
+<section class="menu container mx-auto py-4 md:pt-20 px-2 top-2 z-10" id="menu">
   <h1 class="text-xl font-bold mb-16 text-center md:text-3xl">Menu</h1>
-  <div
-    class="grid gap-x-2 gap-y-16 md:gap-x-4 lg:gap-x-40 gap-y-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-    <% pizzas.forEach((pizza)=> { %>
-      <div class="w-66">
-        <img class="mb-4" src="/img/<%= pizza.image %>" alt="">
-        <div class="text-center">
-          <h2 class="mb-4 text-lg">
-            <%= pizza.name %>
-          </h2>
-          <span class="size py-1 px-4 uppercase text-xs rounded-full">
-            <%= pizza.size %>
-          </span>
-          <div class="flex items-center justify-around mt-6">
-            <span class="font-bold text-lg">
-              <%= pizza.price %>$
-            </span>
-            <button data-pizza="<%= JSON.stringify(pizza) %>"
-              class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-              <span>+</span>
-              <span class="ml-4">Add</span>
-            </button>
+  <div class="flex flex-wrap" id="tabs-id">
+    <div class="w-full">
+      <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-yellow-600 cursor-pointer"
+            onclick="changeAtiveTab(event,'tab-pizza')">
+            Pizzas
+          </a>
+        </li>
+        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal  bg-white cursor-pointer"
+            onclick="changeAtiveTab(event,'tab-drink')">
+            Drinks
+          </a>
+        </li>
+      </ul>
+      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+        <div class="px-4 py-5 flex-auto">
+          <div class="tab-content tab-space">
+            <div class="block" id="tab-pizza">
+              <!-- Pizza -->
+              <div
+                class="grid gap-x-2 gap-y-16 md:gap-x-4 lg:gap-x-40 gap-y-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <% pizzas.forEach((pizza)=> { %>
+                  <% if(pizza.name.includes('Pizza') ) { %>
+                    <div class="w-66">
+                      <img class="mb-4" src="<%= pizza.image %>" alt="">
+                      <div class="text-center">
+                        <h2 class="mb-4 text-lg">
+                          <%= pizza.name %>
+                        </h2>
+                        <span class="size py-1 px-4 uppercase text-xs rounded-full">
+                          <%= pizza.size %>
+                        </span>
+                        <div class="flex items-center justify-around mt-6">
+                          <span class="font-bold text-lg">
+                            <%= pizza.price %> $
+                          </span>
+                          <button data-pizza="<%= JSON.stringify(pizza) %>"
+                            class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                      <% }) %>
+              </div>
+              <!-- End pizza  -->
+            </div>
+            <div class="hidden" id="tab-drink">
+              <!-- Drinks -->
+              <div
+                class="grid gap-x-2 gap-y-16 md:gap-x-4 lg:gap-x-40 gap-y-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <% pizzas.forEach((pizza)=> { %>
+
+                  <% if(pizza.name.includes("Drink") ) { %>
+                    <div class="w-66">
+                      <img class="mb-4" src="<%= pizza.image %>" alt="">
+                      <div class="text-center">
+                        <h2 class="mb-4 text-lg">
+                          <%= pizza.name %>
+                        </h2>
+                        <span class="size py-1 px-4 uppercase text-xs rounded-full">
+                          <%= pizza.size %>
+                        </span>
+                        <div class="flex items-center justify-around mt-6">
+                          <span class="font-bold text-lg">
+                            <%= pizza.price %> $
+                          </span>
+                          <button data-pizza="<%= JSON.stringify(pizza) %>"
+                            class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <% } %>
+                      <% }) %>
+              </div>
+              <!-- End drinks  -->
+            </div>
           </div>
         </div>
       </div>
-      <% }) %>
+    </div>
   </div>
 </section>
+<script type="text/javascript">
+  function changeAtiveTab(event, tabID) {
+    let element = event.target;
+    while (element.nodeName !== "A") {
+      element = element.parentNode;
+    }
+    ulElement = element.parentNode.parentNode;
+    aElements = ulElement.querySelectorAll("li > a");
+    tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
+    for (let i = 0; i < aElements.length; i++) {
+      aElements[i].classList.remove("text-white");
+      aElements[i].classList.remove("bg-yellow-600");
+      aElements[i].classList.add("text-black");
+      aElements[i].classList.add("bg-white");
+      tabContents[i].classList.add("hidden");
+      tabContents[i].classList.remove("block");
+    }
+    element.classList.remove("text-white");
+    element.classList.remove("bg-white");
+    element.classList.add("text-white");
+    element.classList.add("bg-yellow-600");
+    document.getElementById(tabID).classList.remove("hidden");
+    document.getElementById(tabID).classList.add("block");
+  }
+</script>
