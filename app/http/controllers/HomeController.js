@@ -1,4 +1,4 @@
-const Menu = require("../../models/Menu");
+const Menu = require("../../models/menu");
 
 class homeController {
   async index(req, res) {
