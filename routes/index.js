@@ -15,7 +15,7 @@ module.exports = function initRoute(app) {
 
   app.use("/", homeRouter);
 
-  app.get((req, res) => {
-    return res.status(404).render("404");
+  app.get("*", (req, res) => {
+    return res.status(404).render("errors/404");
   });
 };
