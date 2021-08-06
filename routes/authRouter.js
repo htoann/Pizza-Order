@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const guest = require("../app/http/middleware/guest");
+const guest = require("../app/http/middleware/Guest");
 const authController = require("../app/http/controllers/AuthController");
 
 router.get("/login", guest, authController.login);
