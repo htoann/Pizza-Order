@@ -1,5 +1,5 @@
 const { json } = require("express");
-const Order = require("../../../models/Order");
+const Order = require("../../../models/order");
 
 class CartController {
   index(req, res) {
