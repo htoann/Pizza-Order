@@ -1,5 +1,5 @@
 import axios from "axios";
-import moment from "moment";
+import moment from "moment-timezone";
 import Noty from "noty";
 
 export function initAdmin(socket) {
@@ -90,7 +90,9 @@ export function initAdmin(socket) {
                     </div>
                 </td>
                 <td class="border px-4 py-2">
-                    ${moment(order.createdAt).format("LLL")}
+                    ${moment(order.createdAt)
+                      .tz("Asia/Ho_Chi_Minh")
+                      .format("LLL")}
                 </td>
                 <td class="border px-4 py-2">
                     ${order.paymentStatus ? "paid" : "Not paid"}

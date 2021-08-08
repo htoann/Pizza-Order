@@ -1,5 +1,5 @@
 let statuses = document.querySelectorAll(".status_line");
-import moment from "moment";
+import moment from "moment-timezone";
 
 export function updateStatus(order) {
   let time = document.createElement("time");
@@ -19,7 +19,9 @@ export function updateStatus(order) {
 
     if (dataProp === order.status) {
       stepCompleted = false;
-      time.innerText = moment(order.updatedAt).format("LLL");
+      time.innerText = moment(order.updatedAt)
+        .tz("Asia/Ho_Chi_Minh")
+        .format("LLL");
       status.appendChild(time);
 
       if (status.nextElementSibling) {

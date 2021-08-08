@@ -1,6 +1,6 @@
 import axios from "axios";
 import Noty from "noty";
-import moment from "moment";
+import moment from "moment-timezone";
 import { initAdmin } from "./admin";
 import { updateStatus } from "./update-status";
 
@@ -76,7 +76,7 @@ if (adminAreaPath.includes("admin")) {
 
 socket.on("orderUpdated", (data) => {
   const updatedOrder = { ...order };
-  updatedOrder.updatedAt = moment().format("LLL");
+  updatedOrder.updatedAt = moment().tz("Asia/Ho_Chi_Minh").format("LLL");
   updatedOrder.status = data.status;
   updateStatus(updatedOrder);
   new Noty({

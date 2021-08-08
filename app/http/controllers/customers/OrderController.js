@@ -1,5 +1,5 @@
 const Order = require("../../../models/order");
-const moment = require("moment");
+const moment = require("moment-timezone");
 
 class OrderController {
   async index(req, res) {
