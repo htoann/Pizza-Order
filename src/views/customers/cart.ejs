@@ -23,7 +23,7 @@
                             <%= pizza.qty %> Pcs
                         </span>
                         <span class="font-bold block text-lg">
-                            <%= pizza.item.price * pizza.qty %> $
+                            <%= (pizza.item.price * pizza.qty).toFixed(2) %> $
                         </span>
                         <button class="mx-4 md:mx-0 md:ml-12 font-bold" id="deleteCartButton"
                             data-pizza-id="<%= pizza.item._id %>">Delete</button>
