@@ -40,7 +40,7 @@
                 </div>
                 <% if(user) { %>
                     <div>
-                        <form action="/customer/orders" method="POST" class="mt-12">
+                        <form action="/customer/orders" method="POST" class="mt-12" id="payment-form">
                             <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" type="number"
                                 placeholder="Phone number" required>
                             <input name="address" class="border border-gray-400 p-2 w-1/2" type="text"
