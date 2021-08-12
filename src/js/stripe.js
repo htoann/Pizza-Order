@@ -1,3 +1,6 @@
+import axios from "axios";
+import Noty from "noty";
+
 export function initStripe() {
   const paymentType = document.querySelector("#paymentType");
 
