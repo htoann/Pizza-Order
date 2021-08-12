@@ -2019,6 +2019,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initStripe": () => (/* binding */ initStripe)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2032,6 +2036,8 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
 
 function initStripe() {
   var paymentType = document.querySelector("#paymentType"); // Ajax call
@@ -2061,9 +2067,9 @@ function initStripe() {
         _iterator.f();
       }
 
-      axios.post("/customer/orders", formObject).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/customer/orders", formObject).then(function (res) {
         console.log(res.data.message);
-        new Noty({
+        new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
           layout: "centerRight",
           theme: "light",
           type: "success",
@@ -2074,7 +2080,7 @@ function initStripe() {
           window.location.assign("/customer/orders");
         }, 1000);
       })["catch"](function (err) {
-        new Noty({
+        new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
           layout: "centerRight",
           theme: "light",
           type: "error",
