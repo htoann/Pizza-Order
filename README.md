@@ -35,7 +35,7 @@ yarn dev
 ```
 
 
-## Colors
+<!-- ## Colors
 
 Below is the color palette used in this app:
 
@@ -44,7 +44,7 @@ Below is the color palette used in this app:
 - ![#e9765b](https://via.placeholder.com/15/f8f8f8/000000?text=+) `#f8f8f8`
 - ![#f2a490](https://via.placeholder.com/15/fff/000000?text=+) `#fff`
 - ![#18a558](https://via.placeholder.com/15/ccc/000000?text=+) `#ccc`
-- ![#de5b6d](https://via.placeholder.com/15/232323/000000?text=+) `#232323`
+- ![#de5b6d](https://via.placeholder.com/15/232323/000000?text=+) `#232323` -->
 
 ## License
 
