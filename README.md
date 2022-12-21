@@ -2,10 +2,6 @@
 
 Realtime pizza order tracker app using Node - Express - Mongo - Socket.io
 
-The application is deployed to Heroku and can be accessed through the following link:
-
-[Pizza on Heroku](https://pizzanows.herokuapp.com)
-
 ---
 
 ## Usage
